@@ -1,0 +1,19 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "firebase/php-jwt": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "svgtautils\\oidc\\": "src"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "openssl rand -base64 32 > src/salt.txt"
+        ],
+        "post-install-cmd": [
+            "openssl rand -base64 32 > src/salt.txt"
+        ]
+    }
+}
