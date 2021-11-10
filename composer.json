@@ -1,4 +1,14 @@
 {
+    "name": "svgta/oidcclient",
+    "description": "client OIDC",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "svgta",
+            "email": "svgta@live.com"
+        }
+    ],
     "require": {
         "guzzlehttp/guzzle": "^7.4",
         "firebase/php-jwt": "^5.4"
