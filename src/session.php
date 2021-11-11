@@ -16,6 +16,7 @@ class session{
 		'code_challenge_method',
 		'access_token',
 		'id_token',
+		'refresh_token',
 		'token',
 		'isAuthorize',
 	];

@@ -10,18 +10,25 @@ A PHP library to be used as OIDC client for projects.
     + [User Info](#user-info)
     + [Logout](#logout)
   * [Tokens](#tokens)
+    + [Get tokens](#get-tokens)
+    + [Revoke a token](#revoke-a-token)
+    + [Force OP to give the refresh-token](#force-op-to-give-the-refresh-token)
+    + [Refresh a token](#refresh-a-token)
+    + [Get user info with an access token](#get-user-info-with-an-access-token)
   * [Parameters](#parameters)
     + [GET params](#get-params)
     + [SET params](#set-params)
     + [UNSET a param](#unset-a-param)
   * [Guzzle](#guzzle)
 
+
+
 ## Installation
 
 Use composer
 
 ```php
-composer require svgtautils/oidcclient
+composer require svgta/oidcclient
 ```
 
 To encrypt the datas saved in the session, run the shell command : 
