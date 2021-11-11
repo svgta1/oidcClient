@@ -14,6 +14,7 @@ class client{
 	private $scope = [];
 	public $param = null;
 	public $token = null;
+	public $verify = null;
 
 	public function __construct($a, ...$c){
 		$this->param = Statics::getParam();
@@ -43,6 +44,7 @@ class client{
 		]);
 		Statics::setGuzzleClient($guzzle);
 		$this->token = new tokenClient();
+		$this->verify = new verify($this->request);
 	}
 	public function logout(?string $redirect = null, ?string $idToken = null): void{
 		$this->token->logout($redirect, $idToken);
@@ -83,9 +85,8 @@ class client{
 			}
 		}
 		if(!isset($this->param->token)){
-			$auth = new verify($this->request);
 			$flowType = $this->param->get('authentication_type');
-			$ret = $auth->$flowType();
+			$ret = $this->verify->$flowType();
 			$this->param->token = $ret;
 		}
 		session::store();

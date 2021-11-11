@@ -178,10 +178,13 @@ svgtautils\oidc\session::deleteSession();
 
 ## Tokens
 
+### Get tokens
+
 After authentifcation, some tokens are set in the parameters :
 
 * access_token
 * id_token
+* token : the JWT token
 * refresh_token : can not be present, depend on the OP
 
 To get a token :
@@ -189,6 +192,69 @@ To get a token :
 ```php
 ...
 $accessToken = $oidc->param->access_token;
+$idToken = $oidc->param->id_token;
+$token = $oidc->param->token;
+...
+```
+
+
+
+### Revoke a token
+
+Only for access_token and refresh_token.
+
+```php
+...
+$oidc->token->revoke->refresh($refreshToken); //revoke refresh token given
+$oidc->token->revoke->access($accessToken); //revoke access token given
+...
+```
+
+If the token is not given, the one find in the parameters will be used. If no token is found in parameters, an exception will result.
+
+
+
+### Force OP to give the refresh-token
+
+Some OP don't give the refresh token. You can force to have it, and store it in a database to reuse it after.
+
+Before the authentication step, you have to set the param :
+
+```php
+...
+$oidc->param->forceRefreshToken = true;
+...
+```
+
+you will get the refresh token after authentication :
+
+```php
+...
+$refreshToken = $oidc->param->refresh_token;
+...
+```
+
+
+
+### Refresh a token
+
+You need to have the refresh token to do that. Authentication type must be "code"
+
+```php
+...
+$newToken = $oidc->token->refresh->new($refreshToken);
+$oidc->authentication->verify->code($newToken);
+$newAccessToken = $this->param->access_token;
+...
+```
+
+
+
+### Get user info with an access token
+
+```php
+...
+$userInfo = $oidc->getUserInfo($accessToken);
 ...
 ```
 
