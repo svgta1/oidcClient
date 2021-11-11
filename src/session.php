@@ -25,7 +25,7 @@ class session{
 			unset($_SESSION[self::SESSION_KEY]);
 		$p = Statics::getParam();
 		foreach(self::TO_STORE as $v)
-			self::setValue($v, $p->get($v));	
+			self::setValue($v, $p->get($v));
 	}
 	public static function retrieve(): void{
 		$p = Statics::getParam();
@@ -34,14 +34,14 @@ class session{
 		foreach($session as $k => $v)
 			$p->set($k, self::getValue($k));
 	}
-	public static function getValue(string $key): array|string|bool|null {
+	public static function getValue(string $key){
 		$session = self::getSession();
 		if(!isset($session[$key])){
 			throw new Exception('Key not set : ' . $key);
 		}
 		try{
 			return Crypto::aesDecrypt($session[$key]);
-		}catch(Exception){
+		}catch(Exception $e){
 			self::deleteSession();
 			return false;
 		}
@@ -59,7 +59,7 @@ class session{
 	private static function setSession($session): void {
 		$_SESSION[self::SESSION_KEY] = serialize($session);
 	}
-	public static function getSession(): array|null {
+	public static function getSession(): ?array {
 		self::ctrlSession();
 		if(!$_SESSION[self::SESSION_KEY])
 			return $_SESSION[self::SESSION_KEY];

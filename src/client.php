@@ -15,7 +15,7 @@ class client{
 	public $param = null;
 	public $token = null;
 
-	public function __construct(array|string $a, ...$c){
+	public function __construct($a, ...$c){
 		$this->param = Statics::getParam();
 		if(is_array($a)){
 			if(!$a['iss'] OR !filter_var($a['iss'], FILTER_VALIDATE_URL))

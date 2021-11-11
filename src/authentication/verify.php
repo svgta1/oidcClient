@@ -9,7 +9,7 @@ class verify{
 	private $param = null;
 	private $request = null;
 
-	const GRANT_TYPE = 'authorization_code'; 
+	const GRANT_TYPE = 'authorization_code';
 	const HASH_ALGO = [
 		'RS256' => 'sha256',
 		'ES256' => 'sha256',
@@ -23,7 +23,7 @@ class verify{
 		$this->request = $request;
 	}
 
-	public function code(array $token = null){
+	public function code(?array $token = null){
 		$this->isError();
 		$oidcConf =  Statics::OIDC_CONFIG_KEY;
 		if(!isset($this->param->$oidcConf))
@@ -84,7 +84,7 @@ class verify{
 		if(isset($token['refresh_token']))
 			$this->param->set('refresh_token', $token['refresh_token']);
 		$this->param->unset('state');
-		return $decode;			
+		return $decode;
 	}
 	private function setAsh($alg = null, $value): string {
 		if(!$alg)
@@ -101,7 +101,7 @@ class verify{
 		$hash = $this->setAsh($alg, $value);
 		$ath = substr($hash, 0, strlen($hash) / 2);
 		if(!($verify == JWT::urlsafeB64Encode($ath)))
-			throw new Exception('Bad verify Hash');		
+			throw new Exception('Bad verify Hash');
 	}
 	private function isError(): void {
 		if(isset($this->request['error'])){

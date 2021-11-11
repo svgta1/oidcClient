@@ -5,7 +5,7 @@ class param{
 	public function destruct(){
 		self::$paramsList = [];
 	}
-	public function set(string|array $key, $value = null): void{
+	public function set($key, $value = null): void{
 		if(is_string($key)){
 			if(is_array($value) OR is_object($value)){
 				foreach($value as $k=>$v)
@@ -18,11 +18,11 @@ class param{
 			foreach($key as $k => $v)
 				self::$paramsList[$k] = $v;
 	}
-	public function unset(string $key = null): void{
+	public function unset(?string $key = null): void{
 		if($key AND isset(self::$paramsList[$key]))
 			unset(self::$paramsList[$key]);
 	}
-	public function get(string $key = null, string $_key = null): string|array|null|bool {
+	public function get(?string $key = null, string $_key = null) {
 		if(!$key)
 			return self::$paramsList;
 		if(!isset(self::$paramsList[$key]))
@@ -35,7 +35,7 @@ class param{
 			return null;
 		return self::$paramsList[$key][$_key];
 	}
-	public function getObj($key): object|null|string|bool|array {
+	public function getObj($key){
 		$obj = json_decode(json_encode($this->get($key)));
 		return $obj;
 	}

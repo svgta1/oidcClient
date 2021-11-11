@@ -19,7 +19,7 @@ class client{
 		$this->revoke = new revoke();
 		$this->refresh = new refresh();
 	}
-	public function logout(string $redirect = null, string $idToken = null): void{
+	public function logout(?string $redirect = null, ?string $idToken = null): void{
 		session::deleteSession();
 		$oidcConf =  Statics::OIDC_CONFIG_KEY;
 		if(!isset($this->param->$oidcConf))
@@ -44,7 +44,7 @@ class client{
 		header('Location: ' . $url);
         	exit;
 	}
-	public function getUserInfo(string $accessToken = null): array {
+	public function getUserInfo(?string $accessToken = null): array {
 		$oidcConf =  Statics::OIDC_CONFIG_KEY;
 		if(!isset($this->param->$oidcConf))
 			$this->param->set(Statics::OIDC_CONFIG_KEY, Statics::getConfFile($this->param->iss));
@@ -66,7 +66,7 @@ class client{
 			return $this->getUserInfoPost($accessToken);
 		}
 	}
-	public function getUserInfoPost(string $accessToken = null): array {
+	public function getUserInfoPost(?string $accessToken = null): array {
 		$oidcConf =  Statics::OIDC_CONFIG_KEY;
 		if(!isset($this->param->$oidcConf))
 			$this->param->set(Statics::OIDC_CONFIG_KEY, Statics::getConfFile($this->param->iss));
