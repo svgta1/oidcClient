@@ -18,6 +18,7 @@ class client{
 
 	public function __construct($a, ...$c){
 		$this->param = Statics::getParam();
+		session::retrieve();
 		if(is_array($a)){
 			if(!$a['iss'] OR !filter_var($a['iss'], FILTER_VALIDATE_URL))
 				throw new Exception('iss not set in array');
@@ -53,7 +54,6 @@ class client{
 		return $this->token->getUserInfo($token);
 	}
 	public function authentication(?string $url = null): array{
-		session::retrieve();
 		if(!$this->param->get(Statics::OIDC_CONFIG_KEY))
 			$this->param->set(Statics::OIDC_CONFIG_KEY, Statics::getConfFile($this->param->iss));
 		if(!$this->param->isAuthorize)

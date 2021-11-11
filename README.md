@@ -250,8 +250,8 @@ You need to have the refresh token to do that. Authentication type must be "code
 ```php
 ...
 $newToken = $oidc->token->refresh->new($refreshToken);
-$oidc->authentication->verify->code($newToken);
-$newAccessToken = $this->param->access_token;
+$oidc->verify->code($newToken);
+$newAccessToken = $oidc->param->access_token;
 ...
 ```
 
