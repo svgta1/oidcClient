@@ -47,7 +47,7 @@ class client{
 		$this->token = new tokenClient();
 		$this->verify = new verify($this->request);
 	}
-	public function logout(?string $redirect = null, ?string $idToken = null): void{
+	public function logout(?string $idToken = null, ?string $redirect = null): void{
 		$this->token->logout($redirect, $idToken);
 	}
 	public function getUserInfo(?string $token = null): array{

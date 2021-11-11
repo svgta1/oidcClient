@@ -15,6 +15,7 @@ A PHP library to be used as OIDC client for projects.
     + [Force OP to give the refresh-token](#force-op-to-give-the-refresh-token)
     + [Refresh a token](#refresh-a-token)
     + [Get user info with an access token](#get-user-info-with-an-access-token)
+    + [Logout with an ID Token](#logout-with-an-id-token)
   * [Parameters](#parameters)
     + [GET params](#get-params)
     + [SET params](#set-params)
@@ -262,6 +263,16 @@ $newAccessToken = $oidc->param->access_token;
 ```php
 ...
 $userInfo = $oidc->getUserInfo($accessToken);
+...
+```
+
+
+
+### Logout with an ID Token
+
+```php
+...
+$oidc->lougout($idToken);
 ...
 ```
 
