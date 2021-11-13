@@ -35,7 +35,7 @@ composer require svgta/oidcclient
 To encrypt the datas saved in the session, run the shell command :
 
 ```shell
-openssl rand -base64 32 > ...pathOfYourProject/vendor/svgtautils/oidcclient/src/salt.txt
+openssl rand -base64 32 > ...pathOfYourProject/vendor/svgta/oidcclient/src/salt.txt
 ```
 
 A default salt.txt file is in the library. But it's insecure to use it.

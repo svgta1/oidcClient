@@ -5,7 +5,7 @@ use svgta\oidc\utils\Statics;
 use svgta\oidc\utils\Crypto;
 
 class session{
-	const SESSION_KEY = 'svgtautils_oidc';
+	const SESSION_KEY = 'svgta_oidc';
 	const TO_STORE = [
 		'state',
 		'nonce',
