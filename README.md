@@ -32,7 +32,7 @@ Use composer
 composer require svgta/oidcclient
 ```
 
-To encrypt the datas saved in the session, run the shell command : 
+To encrypt the datas saved in the session, run the shell command :
 
 ```shell
 openssl rand -base64 32 > ...pathOfYourProject/vendor/svgtautils/oidcclient/src/salt.txt
@@ -49,16 +49,16 @@ This library use :
 
 ## How To Use
 
-### Initiate 
+### Initiate
 
-With variables : 
+With variables :
 
 ```php
 <?PHP
 /***
 .... your own code with include/require the vendor/autoload.php
 ***/
-use svgtautils\oidc;
+use svgta\oidc;
 
 $iss = 'your OP url';
 $client_id = 'your OIDC client id';
@@ -66,14 +66,14 @@ $client_secret = 'your OIDC client secret';
 $oidc = new oidc\client($iss, $client_id, $client_secret);
 ```
 
-With array : 
+With array :
 
 ```php
 <?PHP
 /***
 .... your own code with include/require the vendor/autoload.php
 ***/
-use svgtautils\oidc;
+use svgta\oidc;
 
 $oidc = new oidc\client([
     'iss' => 'your OP url',
@@ -86,7 +86,7 @@ $oidc = new oidc\client([
 
 ### Set Parameters
 
-<u>Use proxy</u> : 
+<u>Use proxy</u> :
 
 ```php
 ...
@@ -174,11 +174,11 @@ $oidc->logout();
 
 The logout method logout from the OP, but not from your app. Set the code you need to do that.
 
-After the logout, you can erase the session datas for this OIDC client with this : 
+After the logout, you can erase the session datas for this OIDC client with this :
 
 ```
 ...
-svgtautils\oidc\session::deleteSession();
+svgta\oidc\session::deleteSession();
 ...
 ```
 
@@ -304,18 +304,18 @@ In any case, you can see all the parameters set with the the command.
 $myParam = $oidc->param->myParam; //return an object or the result of the object;
 //OR
 $myParam = $oidc->param->myParam(); // return an array or the reslt of the array;
-//OR 
+//OR
 $myParam = $oidc->param->get('myParam'); //same result as $oidc->param->myParam()
 ```
 
 
 
-**Concret example with default guzzle parameters :** 
+**Concret example with default guzzle parameters :**
 
 ```php
 ...
 $guzzle = $oidc->param->guzzle;
-/* the var_dump($guzzle) will return : 
+/* the var_dump($guzzle) will return :
 object(stdClass)#21 (4) {
   ["debug"]=>
   bool(false)
@@ -329,7 +329,7 @@ object(stdClass)#21 (4) {
 */
 
 $guzzle = $oidc->param->guzzle(); // or $guzzle = $oidc->param->get('guzzle');
-/* the var_dump($guzzle) will return : 
+/* the var_dump($guzzle) will return :
 array(4) {
   ["debug"]=>
   bool(false)
@@ -357,13 +357,13 @@ $verify = $oidc->param->get('guzzle','verify'); // can have only two parameters
 
 As for GET, you can set parameters in more than one maner
 
-**Object : ** 
+**Object : **
 
 ```php
 ...
 $oidc->param->myParam1 = 'myValue';
 //OR
-$oidc->param->myParam1->myParam2 = 'value2'; //myParam1 need to be set before 
+$oidc->param->myParam1->myParam2 = 'value2'; //myParam1 need to be set before
 //OR
 $oidc->param->myParm1 = ['myParam2' => 'value2', 'myParam3' => 'value3'];
 ...
@@ -396,6 +396,3 @@ $oidc->param->unset('myParm');
 ## Guzzle
 
 This library use guzzle. Default parameters have been set. You can read this page https://docs.guzzlephp.org/en/stable/request-options.html#cert to see the differents parameters you can set. They must be set in $oidc->param->guzzle to be active.
-
-
-

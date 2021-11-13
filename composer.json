@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "svgtautils\\oidc\\": "src"
+            "svgta\\oidc\\": "src"
         }
     },
     "scripts": {

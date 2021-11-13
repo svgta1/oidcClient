@@ -1,5 +1,5 @@
 <?php
-namespace svgtautils\oidc;
+namespace svgta\oidc;
 
 class Exception extends \Exception{
 }

@@ -1,7 +1,7 @@
 <?php
-namespace svgtautils\oidc\authentication;
-use svgtautils\oidc\Exception;
-use svgtautils\oidc\utils\Statics;
+namespace svgta\oidc\authentication;
+use svgta\oidc\Exception;
+use svgta\oidc\utils\Statics;
 use Firebase\JWT\JWK;
 use Firebase\JWT\JWT;
 

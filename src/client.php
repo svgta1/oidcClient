@@ -1,12 +1,12 @@
 <?php
-namespace svgtautils\oidc;
-use svgtautils\oidc\Exception;
-use svgtautils\oidc\utils\Statics;
-use svgtautils\oidc\session;
-use svgtautils\oidc\authentication\flows;
-use svgtautils\oidc\authentication\pkce;
-use svgtautils\oidc\authentication\verify;
-use svgtautils\oidc\token\client as tokenClient;
+namespace svgta\oidc;
+use svgta\oidc\Exception;
+use svgta\oidc\utils\Statics;
+use svgta\oidc\session;
+use svgta\oidc\authentication\flows;
+use svgta\oidc\authentication\pkce;
+use svgta\oidc\authentication\verify;
+use svgta\oidc\token\client as tokenClient;
 use GuzzleHttp\Client as Guzzle;
 
 class client{

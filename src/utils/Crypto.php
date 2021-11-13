@@ -1,6 +1,6 @@
 <?php
-namespace svgtautils\oidc\utils;
-use svgtautils\oidc\Exception;
+namespace svgta\oidc\utils;
+use svgta\oidc\Exception;
 class Crypto{
 	public static function getSecretSalt(){
 		$file = dirname(__FILE__) . '/../salt.txt';

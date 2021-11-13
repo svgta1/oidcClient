@@ -1,8 +1,8 @@
 <?php
-namespace svgtautils\oidc;
-use svgtautils\oidc\Exception;
-use svgtautils\oidc\utils\Statics;
-use svgtautils\oidc\utils\Crypto;
+namespace svgta\oidc;
+use svgta\oidc\Exception;
+use svgta\oidc\utils\Statics;
+use svgta\oidc\utils\Crypto;
 
 class session{
 	const SESSION_KEY = 'svgtautils_oidc';

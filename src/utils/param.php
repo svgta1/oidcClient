@@ -1,5 +1,5 @@
 <?php
-namespace svgtautils\oidc\utils;
+namespace svgta\oidc\utils;
 class param{
 	private static $paramsList = [];
 	public function destruct(){

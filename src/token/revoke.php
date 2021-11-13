@@ -1,7 +1,7 @@
 <?php
-namespace svgtautils\oidc\token;
-use svgtautils\oidc\utils\Statics;
-use svgtautils\oidc\Exception;
+namespace svgta\oidc\token;
+use svgta\oidc\utils\Statics;
+use svgta\oidc\Exception;
 class revoke{
 	private $param = null;
 	public function __construct(){

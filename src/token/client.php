@@ -1,10 +1,10 @@
 <?php
-namespace svgtautils\oidc\token;
-use svgtautils\oidc\utils\Statics;
-use svgtautils\oidc\token\revoke;
-use svgtautils\oidc\token\refresh;
-use svgtautils\oidc\session;
-use svgtautils\oidc\Exception;
+namespace svgta\oidc\token;
+use svgta\oidc\utils\Statics;
+use svgta\oidc\token\revoke;
+use svgta\oidc\token\refresh;
+use svgta\oidc\session;
+use svgta\oidc\Exception;
 
 class client{
 	private $param = null;

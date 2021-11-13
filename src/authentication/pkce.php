@@ -1,7 +1,7 @@
 <?php
-namespace svgtautils\oidc\authentication;
-use svgtautils\oidc\utils\Statics;
-use svgtautils\oidc\Exception;
+namespace svgta\oidc\authentication;
+use svgta\oidc\utils\Statics;
+use svgta\oidc\Exception;
 
 class pkce{
 	const CODE_CHALLENGE_DEFAULT_ALGO = 'S256';

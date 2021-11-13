@@ -1,7 +1,7 @@
 <?php
-namespace svgtautils\oidc\utils;
-use svgtautils\oidc\Exception;
-use svgtautils\oidc\utils\param;
+namespace svgta\oidc\utils;
+use svgta\oidc\Exception;
+use svgta\oidc\utils\param;
 
 class Statics{
 	const OIDC_CONFIG = '/.well-known/openid-configuration';
