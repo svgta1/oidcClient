@@ -1,6 +1,7 @@
 <?php
 namespace svgta\oidc\authentication;
 use svgta\oidc\Exception;
+use svgta\oidc\session;
 use svgta\oidc\utils\Statics;
 use Firebase\JWT\JWK;
 use Firebase\JWT\JWT;
@@ -84,6 +85,7 @@ class verify{
 		if(isset($token['refresh_token']))
 			$this->param->set('refresh_token', $token['refresh_token']);
 		$this->param->unset('state');
+		session::store();
 		return $decode;
 	}
 	private function setAsh($alg = null, $value): string {
