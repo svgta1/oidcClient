@@ -19,6 +19,7 @@ class session{
 		'refresh_token',
 		'token',
 		'isAuthorize',
+		'client_id',
 	];
 
 	public static function store(): void{
