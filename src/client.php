@@ -135,10 +135,10 @@ class client{
 	public function setNonce(): void{
 		$this->param->set('nonce', Statics::getRandom());
 	}
-	private function getState(): string|null{
+	private function getState(): ?string{
 		return $this->param->get('state');
 	}
-	private function getNonce(): string|null{
+	private function getNonce(): ?string{
 		return $this->param->get('nonce');
 	}
 	public function setScope(array $scope): void{
