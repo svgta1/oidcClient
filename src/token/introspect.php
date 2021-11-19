@@ -2,12 +2,14 @@
 namespace svgta\oidc\token;
 use svgta\oidc\utils\Statics;
 use svgta\oidc\Exception;
+use svgta\oidc\session;
 class introspect{
   private $param = null;
   private $endpoint = null;
 
   const END_POINT = 'introspection_endpoint';
   public function __construct(){
+    session::retrieve();
     $this->param = Statics::getParam();
     $endPoint = self::END_POINT;
     $oidcConf = Statics::OIDC_CONFIG_KEY;
