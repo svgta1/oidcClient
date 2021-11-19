@@ -31,9 +31,9 @@ class introspect{
       throw new Exception('Token not given');
     if(!$this->endpoint)
       throw new Exception('endpoint not defined', [
-        $this->param->$oidcConf,
         $endPoint,
-        $this->param->$oidcConf->endPoint,
+        $this->param->$oidcConf->$endPoint,
+        $this->param->$oidcConf->introspection_endpoint,
       ]);
     $param = [
       'token' => $token,
