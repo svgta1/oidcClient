@@ -11,7 +11,7 @@ class refresh{
 	public function __construct(){
 		$this->param = Statics::getParam();
 	}
-	public function new(?string $refresh_token = null){
+	public function new(?string $refresh_token = null): array {
 		if(!$refresh_token)
 			throw new Exception('refresh_token needed');
 		$oidcConf = Statics::OIDC_CONFIG_KEY;
