@@ -13,10 +13,8 @@ class verify{
 	const GRANT_TYPE = 'authorization_code';
 	const HASH_ALGO = [
 		'RS256' => 'sha256',
-		'ES256' => 'sha256',
-		'HS256' => 'sha256',
-		'HS384' => 'sha384',
-		'HS512' => 'sha512',
+		'RS384' => 'sha384',
+		'RS512' => 'sha512',
 	];
 
 	public function __construct($request){
