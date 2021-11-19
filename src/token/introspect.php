@@ -37,7 +37,7 @@ class introspect{
     $_gparams = $gParams;
     $_gparams['headers'] = [
         'Content-Type' => 'application/x-www-form-urlencoded',
-        'Authorization' => 'Basic' .  base64_encode(urlencode($this->param->client_id) . ':' . urlencode($this->param->client_secret)),
+        'Authorization' => 'Basic ' .  base64_encode(urlencode($this->param->client_id) . ':' . urlencode($this->param->client_secret)),
         'Accept' => 'application/json',
     ];
     $_gparams['form_params'] = $param;
