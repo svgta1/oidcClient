@@ -46,12 +46,16 @@ class verify{
 			];
 			$_gparams['form_params'] = $param;
 
-			$res = Statics::getGuzzleClient()->request('POST', $this->param->$oidcConf->token_endpoint, $_gparams);
+			try{
+				$res = Statics::getGuzzleClient()->request('POST', $this->param->$oidcConf->token_endpoint, $_gparams);
+			}catch(\GuzzleHttp\Exception\ClientException $e){
+				throw new Exception($e->getMessage(), $_gparams);
+			}
 			$token = (array)JWT::jsonDecode((string)$res->getBody());
 		}
 		if(isset($token['error'])){
 			$er = (isset($token['error_description'])) ? $token['error_description'] : 'Error ' . $token['error'];
-			throw new Exception($er, $_gparams);
+			throw new Exception($er);
 		}
 		if(!isset($token['id_token']))
 			throw new Exception('id_token not received');
