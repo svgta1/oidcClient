@@ -9,18 +9,15 @@ class introspect{
 
   const END_POINT = 'introspection_endpoint';
   public function __construct(){
-    session::retrieve();
     $this->param = Statics::getParam();
     $endPoint = self::END_POINT;
     $oidcConf = Statics::OIDC_CONFIG_KEY;
-    if(!$this->param->get(Statics::OIDC_CONFIG_KEY))
-      $this->param->set(Statics::OIDC_CONFIG_KEY, Statics::getConfFile($this->param->iss));
     $this->endpoint = $this->param->$oidcConf->$endPoint;
   }
-  public function id($token = null): array{
+  public function refresh($token = null): array{
     if($token === null)
-      $token = $this->param->id_token;
-    return $this->introspect($token, 'id_token');
+      $token = $this->param->refresh_token;
+    return $this->introspect($token, 'refresh_token');
   }
   public function access($token = null): array{
     if($token === null)
@@ -48,7 +45,11 @@ class introspect{
         'Accept' => 'application/json',
     ];
     $_gparams['form_params'] = $param;
-    $res = Statics::getGuzzleClient()->request('POST', $this->endpoint, $_gparams);
+    try{
+      $res = Statics::getGuzzleClient()->request('POST', $this->endpoint, $_gparams);
+    }catch(\GuzzleHttp\Exception\ClientException $e){
+      throw new Exception($e->getMessage(), $_gparams);
+    }
     return json_decode((string)$res->getBody(), TRUE);
   }
 }
