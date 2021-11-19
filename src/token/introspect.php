@@ -28,7 +28,7 @@ class introspect{
     if(!$token)
       throw new Exception('Token not given');
     if(!$this->endpoint)
-      throw new Exception('endpoint not defined');
+      throw new Exception('endpoint not defined', $this->endpoint);
     $param = [
       'token' => $token,
     ];
