@@ -11,6 +11,8 @@ class introspect{
     $this->param = Statics::getParam();
     $endPoint = self::END_POINT;
     $oidcConf = Statics::OIDC_CONFIG_KEY;
+    if(!$this->param->get(Statics::OIDC_CONFIG_KEY))
+      $this->param->set(Statics::OIDC_CONFIG_KEY, Statics::getConfFile($this->param->iss));
     $this->endpoint = $this->param->$oidcConf->$endPoint;
   }
   public function id($token = null): array{
