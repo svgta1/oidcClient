@@ -51,7 +51,7 @@ class verify{
 		}
 		if(isset($token['error'])){
 			$er = (isset($token['error_description'])) ? $token['error_description'] : 'Error ' . $token['error'];
-			throw new Exception($er);
+			throw new Exception($er, $_gparams);
 		}
 		if(!isset($token['id_token']))
 			throw new Exception('id_token not received');
