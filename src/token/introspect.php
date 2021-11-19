@@ -6,13 +6,9 @@ use svgta\oidc\session;
 class introspect{
   private $param = null;
   private $endpoint = null;
-
   const END_POINT = 'introspection_endpoint';
   public function __construct(){
     $this->param = Statics::getParam();
-    $endPoint = self::END_POINT;
-    $oidcConf = Statics::OIDC_CONFIG_KEY;
-    $this->endpoint = $this->param->$oidcConf->$endPoint;
   }
   public function refresh($token = null): array{
     if($token === null)
@@ -29,12 +25,6 @@ class introspect{
     $endPoint = self::END_POINT;
     if(!$token)
       throw new Exception('Token not given');
-    if(!$this->endpoint)
-      throw new Exception('endpoint not defined', [
-        $this->endpoint,
-        $this->param->$oidcConf->$endPoint,
-        $this->param->$oidcConf->introspection_endpoint,
-      ]);
     $param = [
       'token' => $token,
     ];
@@ -52,7 +42,7 @@ class introspect{
     ];
     $_gparams['form_params'] = $param;
     try{
-      $res = Statics::getGuzzleClient()->request('POST', $this->endpoint, $_gparams);
+      $res = Statics::getGuzzleClient()->request('POST', $this->param->$oidcConf->$endPoint, $_gparams);
     }catch(\GuzzleHttp\Exception\ClientException $e){
       throw new Exception($e->getMessage(), $_gparams);
     }
