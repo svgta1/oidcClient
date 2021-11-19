@@ -10,6 +10,7 @@ class client{
 	private $param = null;
 	public $revoke = null;
 	public $refresh = null;
+	public $introspect = null;
 	const METHOD = [
 		'get' => 'client_secret_basic',
 		'post' => 'client_secret_post',
@@ -18,6 +19,7 @@ class client{
 		$this->param = Statics::getParam();
 		$this->revoke = new revoke();
 		$this->refresh = new refresh();
+		$this->introspect = new introspect();
 	}
 	public function logout(?string $redirect = null, ?string $idToken = null): void{
 		session::deleteSession();
