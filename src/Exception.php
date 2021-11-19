@@ -8,6 +8,6 @@ class Exception extends \Exception{
       "message" => $message,
       "info" => $info,
     ];
-    parent::__construct($msg, $code, $previous);
+    parent::__construct(json_encode($msg), $code, $previous);
   }
 }
