@@ -10,7 +10,8 @@ class introspect{
   public function __construct(){
     $this->param = Statics::getParam();
     $endPoint = self::END_POINT;
-    $this->endpoint = $this->param->openid_configuration->$endPoint;
+    $oidcConf = Statics::OIDC_CONFIG_KEY;
+    $this->endpoint = $this->param->$oidcConf->$endPoint;
   }
   public function id($token = null): array{
     if($token === null)
