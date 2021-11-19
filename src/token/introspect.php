@@ -25,10 +25,11 @@ class introspect{
     return $this->introspect($token, 'access_token');
   }
   private function introspect($token = null, $hint = null): array{
+    $oidcConf = Statics::OIDC_CONFIG_KEY;
     if(!$token)
       throw new Exception('Token not given');
     if(!$this->endpoint)
-      throw new Exception('endpoint not defined', $this->endpoint);
+      throw new Exception('endpoint not defined', $this->param->$oidcConf);
     $param = [
       'token' => $token,
     ];
