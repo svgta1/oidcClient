@@ -11,8 +11,6 @@ class introspect{
     $this->param = Statics::getParam();
   }
   public function refresh($token = null): array{
-    if($token === null)
-      $token = $this->param->refresh_token;
     return $this->introspect($token, 'refresh_token');
   }
   public function access($token = null): array{
