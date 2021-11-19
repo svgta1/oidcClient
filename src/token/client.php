@@ -3,6 +3,7 @@ namespace svgta\oidc\token;
 use svgta\oidc\utils\Statics;
 use svgta\oidc\token\revoke;
 use svgta\oidc\token\refresh;
+use svgta\oidc\token\introspect;
 use svgta\oidc\session;
 use svgta\oidc\Exception;
 
